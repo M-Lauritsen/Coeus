@@ -14,11 +14,12 @@ namespace Coeus.Controllers
         {
             return View();
         }
-
+        [Route("About")] //removes the controller name after .dk/
         public IActionResult About()
         {
             return View();
         }
+        [Route("Projects")]
         public IActionResult Projects()
         {
             return View();

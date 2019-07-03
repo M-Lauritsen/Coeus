@@ -36,9 +36,9 @@ namespace Coeus
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //connect to DB (coeus)
-          //  services.AddDbContext<MainDB>(options =>
-          //  options.UseSqlServer(
-          //Configuration.GetConnectionString("MainDB")));
+            //  services.AddDbContext<MainDB>(options =>
+            //  options.UseSqlServer(
+            //Configuration.GetConnectionString("MainDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
