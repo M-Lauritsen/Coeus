@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Coeus.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,10 +36,7 @@ namespace Coeus
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //connect to DB (coeus)
-            //  services.AddDbContext<MainDB>(options =>
-            //  options.UseSqlServer(
-            //Configuration.GetConnectionString("MainDB")));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +56,11 @@ namespace Coeus
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc(routes =>
             {
