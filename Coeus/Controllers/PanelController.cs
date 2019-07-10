@@ -42,7 +42,8 @@ namespace Coeus.Controllers
                 {
                     Title = post.Title,
                     Id = post.Id,
-                    Body = post.Body
+                    Body = post.Body,
+                    Description = post.Description
                 });
             }
         }
@@ -55,6 +56,7 @@ namespace Coeus.Controllers
                 Title = vm.Title,
                 Id = vm.Id,
                 Body = vm.Body,
+                Description = vm.Description,
                 Image = await _fileManager.SaveImage(vm.Image)
             };
             if (vm.Id > 0)
