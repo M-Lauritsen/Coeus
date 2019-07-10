@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Coeus.Data;
+using Coeus.Data.FileManager;
+using Coeus.Data.Repository;
 using Coeus.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +37,19 @@ namespace Coeus
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["ConnectionString"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                //.AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<BlogDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Auth/Login";
+            });
+
+            services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IFileManager, FileManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -56,6 +73,8 @@ namespace Coeus
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseSignalR(routes =>
             {
