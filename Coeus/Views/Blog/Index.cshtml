@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Post>
+
+
+@{
+    ViewBag.Title = "Coeus.dk | Learning by doing";
+    ViewBag.Description = "Coeus.dk | Backend Development Portfolio";
+    ViewBag.Keywords = "Blog Programming C# ASP.NET Core How To Backend Development";
+}
+
+    <body>
+        <div class="text-center">
+            <h1 class="display-4">Blog</h1>
+            <p>My personal projects and ideas</p>
+        </div>
+        @* //TODO Categories (Working just need styling)
+        <a asp-controller="blog" asp-action="index" asp-route-category="Programming">Programming</a>
+        <a asp-controller="blog" asp-action="index" asp-route-category="C#">C#</a>*@
+
+        <div class="row text-center">
+            @foreach (var post in Model)
+            {
+                <div class="col-sm-6">
+                    <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="display-4 text-decoration-none text-dark text-center">
+                        @post.Title <br /> <br />
+                        <img src="~/image/@post.Image" style="max-width:75%;height:auto;" />
+                    </a>
+                    <br /> <br />
+                    <p>@post.Description</p>
+                    <div class="projectLinks">
+                        @if (post.ProjectLink != null)
+                        {
+                            <p><a class="btn btn-danger" href="@post.ProjectLink">Try it out</a></p>
+                        }
+                        @if (post.GitHubLink != null)
+                        {
+                            <p><a class="btn btn-dark" href="@post.GitHubLink">Check on Github</a></p>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </body>
