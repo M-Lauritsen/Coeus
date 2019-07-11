@@ -1,10 +1,9 @@
 ﻿@model PostViewModel
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-
+<link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 <div>
     <form asp-controller="Blog" asp-action="Edit" method="post" enctype="multipart/form-data">
         <input asp-for="Id" type="hidden" />
@@ -13,22 +12,54 @@
             <input asp-for="Title" />
         </div>
         <div>
+            <label>Tags</label>
+            <input asp-for="Tags" />
+        </div>
+        <div>
+            <label>Category</label>
+            <select asp-for="Category">
+                <option value="Programming">Programming</option>
+                <option value="C#">C#</option>
+                <option value="ASP.NET Core">ASP.NET Core</option>
+                <option value="SignalR">SignalR</option>
+                <option value="Blog">Blog</option>
+                <option value="Challenges">Challenges</option>
+            </select>
+        </div>
+        <div>
             <label>Body</label>
-            <input asp-for="Body" />
+            <textarea id="editor" asp-for="Body"></textarea>
         </div>
         <div>
             <label>Description</label>
             <input asp-for="Description" />
         </div>
         <div>
+            <label>Link to Github</label>
+            <input asp-for="GitHubLink" />
+        </div>
+        <div>
+            <label>Link to Project</label>
+            <input asp-for="ProjectLink" />
+        </div>
+        <div>
             <label>Image</label>
+            <input asp-for="CurrentImage" />
             <input asp-for="Image" />
         </div>
         <input type="submit" value="Submit" />
     </form>
 </div>
 
-@*@section scripts{
-    TODO
-}*@
+@section Scripts {
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#editor').trumbowyg();
+
+            // . - class
+            // # - id
+            // nav - html element
+    </script>
+}
 

@@ -1,16 +1,29 @@
-﻿@model  Post
+﻿@model Post
 
-@{ 
-
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",", " ")} {Model.Category}";
 }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<h2>@Model.Title</h2>
-@if (!String.IsNullOrEmpty(Model.Image))
-{
-    var image_path = $"/image/{Model.Image}";
-    <img src="@image_path" />
-}
-<p>@Model.Body</p>
+<body>
 
+    <div class="container">
+        <div class="text-center">
+            <h2 class="display-4">@Model.Title</h2><br />
+            @if (!String.IsNullOrEmpty(Model.Image))
+            {
+                var image_path = $"/image/{Model.Image}";
+                <img src="@image_path" alt="ASP.NET" class="img-responsive" />
+            }
+        </div>
+        <br />
+        <div class="post-body">
+            <p>@Html.Raw(@Model.Body)</p>
+        </div>
+    </div>
+</body>
 
 

@@ -4,14 +4,16 @@ using Coeus.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Coeus.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190711070028_Meta Fields")]
+    partial class MetaFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,11 +35,7 @@ namespace Coeus.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("GitHubLink");
-
                     b.Property<string>("Image");
-
-                    b.Property<string>("ProjectLink");
 
                     b.Property<string>("Tags");
 

@@ -10,6 +10,7 @@ namespace Coeus.Data.Repository
     {
         Post getPost(int id);
         List<Post> getAllPost();
+        List<Post> getAllPost(string Category);
         void AddPost(Post post);
         void RemovePost(int id);
         void UpdatePost(Post post);

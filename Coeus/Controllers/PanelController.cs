@@ -43,7 +43,12 @@ namespace Coeus.Controllers
                     Title = post.Title,
                     Id = post.Id,
                     Body = post.Body,
-                    Description = post.Description
+                    CurrentImage = post.Image,
+                    Description = post.Description,
+                    Tags = post.Tags,
+                    Category = post.Category,
+                    GitHubLink = post.GitHubLink,
+                    ProjectLink = post.ProjectLink
                 });
             }
         }
@@ -57,8 +62,19 @@ namespace Coeus.Controllers
                 Id = vm.Id,
                 Body = vm.Body,
                 Description = vm.Description,
+                Tags = vm.Tags,
+                Category = vm.Category,
+                GitHubLink = vm.GitHubLink,
+                ProjectLink = vm.ProjectLink,
+                
                 Image = await _fileManager.SaveImage(vm.Image)
             };
+
+            if (vm.Image == null)
+                post.Image = vm.CurrentImage;
+            else
+                post.Image = await _fileManager.SaveImage(vm.Image);
+
             if (vm.Id > 0)
                 _repo.UpdatePost(post);
             else

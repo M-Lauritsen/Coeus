@@ -22,9 +22,10 @@ namespace Coeus.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(string category)
         {
-            var Posts = _repo.getAllPost();
+            var Posts = string.IsNullOrEmpty(category) ? _repo.getAllPost() : _repo.getAllPost(category);
+            // Boolean = true : false / is the right side true run getallpost if not run getallpost with category
             return View(Posts);
         }
 
