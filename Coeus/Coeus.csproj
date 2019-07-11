@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Trumbowyg-master\**" />
+    <Content Remove="Trumbowyg-master\**" />
+    <EmbeddedResource Remove="Trumbowyg-master\**" />
+    <None Remove="Trumbowyg-master\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\lib\Trumbowyg-master.zip" />
   </ItemGroup>
 
