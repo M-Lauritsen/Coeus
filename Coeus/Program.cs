@@ -42,7 +42,7 @@ namespace Coeus
                         UserName = "admin",
                         Email = "admin@coeus.dk"
                     };
-                    userManager.CreateAsync(adminUser, "Abc123!").GetAwaiter().GetResult();
+                    userManager.CreateAsync(adminUser, "Ay15M85!#%6074").GetAwaiter().GetResult();
                     userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
                 }
             }

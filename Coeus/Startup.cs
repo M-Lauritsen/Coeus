@@ -51,7 +51,10 @@ namespace Coeus
             services.AddTransient<IRepository, Repository>();
             services.AddTransient<IFileManager, FileManager>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Monthly", new CacheProfile { Duration = 60 * 60 * 24 * 7 * 4 });
+                }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSignalR();
         }

@@ -17,11 +17,12 @@
         <a asp-controller="blog" asp-action="index" asp-route-category="C#">C#</a>*@
 
         <div class="row text-center">
-            @foreach (var post in Model)
+            @foreach (var post in Model.Reverse())
             {
                 <div class="col-sm-6">
                     <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="display-4 text-decoration-none text-dark text-center">
-                        @post.Title <br /> <br />
+                        @post.Title
+                        <div><br /></div>
                         <img src="~/image/@post.Image" style="max-width:75%;height:auto;" />
                     </a>
                     <br /> <br />

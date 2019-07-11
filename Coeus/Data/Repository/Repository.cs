@@ -28,7 +28,6 @@ namespace Coeus.Data.Repository
         public List<Post> getAllPost(string Category)
         {
             Func<Post, bool> InCategory = (post) => { return post.Category.ToLower().Equals(Category.ToLower()); };
-
             return _ctx.Posts
                 .Where(post => InCategory(post))
                 .ToList();

@@ -37,6 +37,7 @@ namespace Coeus.Controllers
             return View(post);
         }
         [HttpGet("/Image/{image}")]
+        [ResponseCache(CacheProfileName = "Monthly")]
         public IActionResult Image(string image)
         {
             var mime = image.Substring(image.LastIndexOf('.') + 1);
