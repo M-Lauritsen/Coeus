@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\content\blog\" />
+    <Folder Include="wwwroot\images\Projects\" />
   </ItemGroup>
 
 
