@@ -26,25 +26,7 @@ namespace Coeus
 
                 ctx.Database.EnsureCreated();
 
-
-                var adminRole = new IdentityRole("Admin");
-
-                if (!ctx.Roles.Any())
-                {
-                    roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
-                    //create Role
-                }
-
-                if (!ctx.Users.Any(u => u.UserName == "admin"))
-                {
-                    var adminUser = new IdentityUser
-                    {
-                        UserName = "admin",
-                        Email = "admin@coeus.dk"
-                    };
-                    userManager.CreateAsync(adminUser, "Ay15M85!#%6074").GetAwaiter().GetResult();
-                    userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
-                }
+               
             }
             catch (System.Exception e)
             {
